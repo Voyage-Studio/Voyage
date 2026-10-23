@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Voyage is an independent game studio in Québec City, makers of Kona and Kona II: Brume.">
+<meta property="og:title" content="Voyage">
+<meta property="og:description" content="Independent game studio in Québec City. Makers of Kona and Kona II: Brume.">
+<meta property="og:image" content="kona2.jpg">
+<link rel="icon" type="image/png" href="logo-mark.png">
+<title>Voyage Studio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+  /* Layout: one dark column. Logo lockup opens the page, two wide game cards side by side on desktop (stacked on phones), a thin press/contact strip, footer. Red is used only for the logo, the play control and link hovers. */
+  :root {
+    --bg: #000000;
+    --surface: #0d0b0b;
+    --line: #231c1c;
+    --fg: #c9bebe;
+    --muted: #c40000;
+    --red: #ff0000;
+    --red-deep: #b30000;
+    --display: "Michroma", "Eurostile", "Avenir Next", system-ui, sans-serif;
+    --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: var(--body); font-size: 17px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+  img { max-width: 100%; display: block; }
+  .wrap {
+    width: min(1120px, 100%); margin-inline: auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .eyebrow { font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+
+  /* Background: the logo's line-work as a large, faint, slow-moving layer */
+  .bg-lines { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .bg-lines img { position: absolute; left: 50%; top: 50%; width: min(140vw, 1500px); max-width: none; height: auto; transform: translate(-50%, -50%) translateY(var(--py, 0px)); opacity: 0.11; will-change: transform; }
+  header, main { position: relative; z-index: 1; }
+  @media (prefers-reduced-motion: reduce) { .bg-lines img { transform: translate(-50%, -50%); } }
+
+  /* Header */
+  header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.9rem; }
+  .brand { display: flex; align-items: center; gap: 0.7rem; }
+  .brand img { height: 30px; width: auto; }
+  .brand .wordmark { height: 13px; width: auto; }
+  nav { display: flex; gap: 1.6rem; }
+  nav a { font-size: 0.95rem; color: var(--muted); transition: color .15s; }
+  nav a:hover { color: var(--fg); }
+  .bar-right { display: flex; align-items: center; gap: 1.6rem; }
+  .icons { display: flex; align-items: center; gap: 0.25rem; padding-left: 1.2rem; border-left: 1px solid var(--line); }
+  .icons a { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; color: var(--muted); transition: color .15s, background .15s; }
+  .icons a:hover { color: var(--fg); background: color-mix(in srgb, var(--red) 18%, transparent); }
+  .icons svg { width: 15px; height: 15px; fill: currentColor; }
+  @media (max-width: 640px) { .brand .wordmark { display: none; } .bar-right { gap: 1rem; } .icons { padding-left: 0.7rem; gap: 0.1rem; } .icons a { width: 26px; height: 26px; } }
+  @media (max-width: 400px) { .icons { display: none; } }
+  @media (max-width: 560px) { nav { gap: 1rem; } nav a { font-size: 0.88rem; } }
+
+  /* Socials */
+  .socials { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+  .socials a {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    border: 1px solid var(--line); border-radius: 999px; padding: 0.45rem 0.9rem;
+    font-size: 0.85rem; color: var(--muted); transition: border-color .15s, color .15s;
+  }
+  .socials a:hover { border-color: var(--red); color: var(--fg); }
+  .socials svg { width: 15px; height: 15px; fill: currentColor; }
+
+  /* Games */
+  .games { padding-block: 2.5rem 4rem; }
+  h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(0.95rem, 1.6vw, 1.15rem); letter-spacing: 0.42em; text-indent: 0.42em; text-transform: uppercase; color: var(--red); opacity: 0.5; text-align: center; text-wrap: balance; }
+  .section-head { margin-bottom: 2rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 1.5rem; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+  .trailer { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: #000; display: block; overflow: hidden; }
+  .trailer img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease, opacity .3s; opacity: .9; }
+  .trailer:hover img { transform: scale(1.03); opacity: 1; }
+  .play {
+    position: absolute; inset: 0; display: grid; place-items: center;
+  }
+  .play span {
+    width: 64px; height: 64px; border-radius: 50%; background: var(--red);
+    display: grid; place-items: center; box-shadow: 0 10px 30px rgba(255,0,0,.35); transition: transform .2s;
+  }
+  .trailer:hover .play span { transform: scale(1.06); }
+  .play svg { width: 22px; height: 22px; fill: #000; margin-left: 3px; }
+  .trailer iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .trailer.playing { cursor: default; }
+  .trailer .tag { position: absolute; left: 0.9rem; bottom: 0.8rem; font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,.55); padding: 0.35rem 0.6rem; border-radius: 3px; }
+  .card-body { padding: 1.3rem 1.3rem 1.4rem; display: grid; gap: 0.9rem; }
+  .card-body h3 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 1.05rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); padding-bottom: 0.7rem; border-bottom: 1px solid var(--line); }
+  .meta { color: var(--red); opacity: 0.5; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; }
+  .card-body p { margin: 0; color: var(--fg); font-size: 0.98rem; max-width: 60ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.2rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 0.95rem; border-radius: 4px;
+    border: 1px solid var(--line); font-size: 0.88rem; font-weight: 500; color: var(--fg); transition: border-color .15s, background .15s;
+  }
+  .btn:hover { border-color: var(--red); background: color-mix(in srgb, var(--red) 10%, transparent); }
+  .btn.primary { background: var(--fg); color: #000; border-color: var(--fg); }
+  .btn.primary:hover { background: var(--red); border-color: var(--red); color: #fff; }
+  .btn svg { width: 14px; height: 14px; fill: currentColor; }
+
+  /* Press / contact strip */
+  .press { border-top: 1px solid var(--line); padding-block: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 2rem; }
+  .press > div { text-align: center; display: grid; justify-items: center; }
+  .press h2 { margin-bottom: 1rem; }
+  .press p { margin: 0; color: var(--muted); font-size: 0.95rem; max-width: 48ch; }
+  .press a.inline { color: var(--fg); border-bottom: 1px solid var(--red-deep); }
+  .press a.inline:hover { border-color: var(--red); }
+  .email { display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 0.8rem; font-size: 1rem; }
+  .email span { color: var(--red); }
+  .email button { font: inherit; font-size: 0.78rem; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 4px; padding: 0.25rem 0.55rem; cursor: pointer; }
+  .email button:hover { border-color: var(--red); color: var(--fg); }
+
+  footer { border-top: 1px solid var(--line); padding-block: 1.6rem calc(1.6rem + env(safe-area-inset-bottom, 0px)); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.8rem; color: var(--muted); font-size: 0.85rem; }
+  footer .socials { justify-content: flex-start; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="bg-lines" aria-hidden="true"><img src="logo-mark.png" alt=""></div>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top">
+      <img src="logo-mark.png" alt="">
+      <img class="wordmark" src="wordmark.png" alt="Voyage" width="642" height="71">
+    </a>
+    <div class="bar-right">
+      <nav aria-label="Main">
+        <a href="#titles">Games</a>
+        <a href="#press">Press</a>
+        <a href="#us">Us</a>
+      </nav>
+      <div class="icons" aria-label="Social media">
+        <a href="https://twitter.com/Parabole" target="_blank" rel="noopener" aria-label="X" title="X"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.6 8.7L23 22h-7l-5.5-7.2L4.2 22H1l8.1-9.3L.6 2h7.2l5 6.6L18.9 2zm-1.2 18h1.9L7.1 3.9H5.1L17.7 20z"/></svg></a>
+        <a href="https://www.youtube.com/@ParaboleCanada" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></a>
+        <a href="https://discord.gg/Parabole" target="_blank" rel="noopener" aria-label="Discord" title="Discord"><svg viewBox="0 0 24 24"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.4a18.3 18.3 0 0 1 4.5 2.3 15.6 15.6 0 0 0-15.4 0 18.3 18.3 0 0 1 4.5-2.3L8.6 3a19.8 19.8 0 0 0-4.9 1.4C.6 9.1-.3 13.6.1 18.1a20 20 0 0 0 6 3l1.3-2.1a13 13 0 0 1-2-1l.5-.4a14.3 14.3 0 0 0 12.2 0l.5.4a13 13 0 0 1-2 1l1.3 2.1a20 20 0 0 0 6-3c.5-5.2-.8-9.7-3.6-13.7zM8 15.4c-1.2 0-2.1-1.1-2.1-2.4S6.8 10.6 8 10.6s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4zm8 0c-1.2 0-2.1-1.1-2.1-2.4s.9-2.4 2.1-2.4 2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4z"/></svg></a>
+        <a href="https://www.facebook.com/parabole/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z"/></svg></a>
+        <a href="https://www.twitch.tv/parabolestudio" target="_blank" rel="noopener" aria-label="Twitch" title="Twitch"><svg viewBox="0 0 24 24"><path d="M4.3 0 .5 3.8v16.8h5.7V24l3.8-3.4h4.6L23.5 12V0H4.3zm17.3 11.1-3.8 3.4h-3.8l-3.3 2.9v-2.9H6.1V1.9h15.5v9.2zM17.8 5h-1.9v5.3h1.9V5zm-5.2 0h-1.9v5.3h1.9V5z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="wrap games" id="titles">
+    <div class="section-head">
+      <h2>Games</h2>
+    </div>
+    <div class="grid">
+
+      <article class="card">
+        <a class="trailer" href="https://www.youtube.com/watch?v=Gs6MFVTsYGk" target="_blank" rel="noopener" aria-label="Watch the Kona II: Brume trailer" data-youtube="Gs6MFVTsYGk">
+          <img src="kona2.jpg" alt="Kona II: Brume key art: a figure in a parka walks into a snowstorm" width="960" height="540">
+          <span class="play"><span><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span></span>
+          <span class="tag">Launch trailer · 1:01</span>
+        </a>
+        <div class="card-body">
+          <h3>Kona II: Brume</h3>
+          <div class="meta"><span>2023</span><span>PC · PS4 · PS5 · Xbox · Switch</span><span>Published by Voyage</span></div>
+          <p>Detective Carl Faubert is stranded in Manastan as a strange mist cuts Northern Québec off from the world. Survive the cold, follow the trail, and uncover what the Brume is hiding.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://store.steampowered.com/app/1229020/Kona_II_Brume/" target="_blank" rel="noopener">Steam</a>
+            <a class="btn" href="https://store.playstation.com/en-us/concept/10003023" target="_blank" rel="noopener">PlayStation</a>
+            <a class="btn" href="https://www.xbox.com/games/store/kona-ii-brume/9MWG18BH5ML7" target="_blank" rel="noopener">Xbox</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="trailer" href="https://www.youtube.com/watch?v=2s9hJatokkU" target="_blank" rel="noopener" aria-label="Watch the Kona launch trailer" data-youtube="2s9hJatokkU">
+          <img src="kona.jpg" alt="Kona key art: a snowy road seen through the windshield of a 1970s car" width="960" height="540">
+          <span class="play"><span><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span></span>
+          <span class="tag">Launch trailer · 1:04</span>
+        </a>
+        <div class="card-body">
+          <h3>Kona</h3>
+          <div class="meta"><span>2017</span><span>PC · PS4 · PS5 · Xbox · Switch · VR</span><span>Published by Voyage</span></div>
+          <p>October 1970. A private detective drives north to a quiet lakeside village and finds it buried under a blizzard, its people gone. A survival mystery told in the voice of a Québécois storyteller.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://store.steampowered.com/app/365160/Kona/" target="_blank" rel="noopener">Steam</a>
+            <a class="btn" href="https://store.playstation.com/en-us/concept/227161" target="_blank" rel="noopener">PlayStation</a>
+            <a class="btn" href="https://www.xbox.com/games/store/_/BXDSG249D6Q2" target="_blank" rel="noopener">Xbox</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="wrap press" id="press">
+    <div>
+      <h2>Press</h2>
+      <p>Press kits for Kona and Kona II: Brume are coming soon. Logos, screenshots and trailers are available on request in the meantime.</p>
+    </div>
+    <div id="us">
+      <h2>Us</h2>
+      <p>Voyage is an independent game studio in Québec City, makers of Kona and Kona II: Brume. Business, press and partnership inquiries:</p>
+      <div class="email">
+        <span id="email-text">hello@voyage-studio.com</span>
+        <button type="button" id="copy-email" aria-label="Copy email address">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <span>© 2026 Voyage · Québec City, Canada</span>
+    <div class="socials" aria-label="Social media">
+      <a href="https://twitter.com/Parabole" target="_blank" rel="noopener">X</a>
+      <a href="https://www.youtube.com/@ParaboleCanada" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://discord.gg/Parabole" target="_blank" rel="noopener">Discord</a>
+      <a href="https://www.facebook.com/parabole/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.twitch.tv/parabolestudio" target="_blank" rel="noopener">Twitch</a>
+    </div>
+  </footer>
+</main>
+
+<script>
+  // Trailers: click-to-play YouTube players. The thumbnail is swapped for an
+  // iframe (youtube-nocookie, autoplay) on click, so the page loads no
+  // YouTube script until someone presses play. The Claude preview host blocks
+  // third-party iframes, so there the thumbnail opens YouTube instead.
+  const inPreview = typeof window.claude !== 'undefined';
+  document.querySelectorAll('.trailer').forEach(a => {
+    if (inPreview) return;
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const id = a.dataset.youtube;
+      const f = document.createElement('iframe');
+      f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+      f.title = a.getAttribute('aria-label') || 'Trailer';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      f.setAttribute('frameborder', '0');
+      a.replaceChildren(f);
+      a.classList.add('playing');
+    });
+  });
+
+  // Parallax: the background lines move at a quarter of the scroll speed.
+  const bg = document.querySelector('.bg-lines img');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (bg && !reduce) {
+    let ticking = false;
+    const update = () => { bg.style.setProperty('--py', (scrollY * -0.25) + 'px'); ticking = false; };
+    addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+    update();
+  }
+
+  const btn = document.getElementById('copy-email');
+  const txt = document.getElementById('email-text');
+  btn.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(txt.textContent); btn.textContent = 'Copied'; }
+    catch (e) {
+      const r = document.createRange(); r.selectNodeContents(txt);
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected';
+    }
+    setTimeout(() => btn.textContent = 'Copy', 1600);
+  });
+</script>
+
+</body>
+</html>
