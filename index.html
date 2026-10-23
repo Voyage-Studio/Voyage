@@ -57,6 +57,8 @@
   nav a { font-size: 0.95rem; color: var(--muted); transition: color .15s; }
   nav a:hover { color: var(--fg); }
   .bar-right { display: flex; align-items: center; gap: 1.6rem; }
+  .lang { font: inherit; font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.16em; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 3px; padding: 0.3rem 0.5rem; cursor: pointer; transition: border-color .15s, color .15s; }
+  .lang:hover { border-color: var(--red); color: var(--fg); }
   .icons { display: flex; align-items: center; gap: 0.25rem; padding-left: 1.2rem; border-left: 1px solid var(--line); }
   .icons a { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; color: var(--muted); transition: color .15s, background .15s; }
   .icons a:hover { color: var(--fg); background: color-mix(in srgb, var(--red) 18%, transparent); }
@@ -139,10 +141,11 @@
     </a>
     <div class="bar-right">
       <nav aria-label="Main">
-        <a href="#titles">Games</a>
-        <a href="#press">Press</a>
-        <a href="#us">Us</a>
+        <a href="#titles" data-i18n="nav_games">Games</a>
+        <a href="#press" data-i18n="nav_press">Press</a>
+        <a href="#us" data-i18n="nav_us">Us</a>
       </nav>
+      <button type="button" class="lang" id="lang-toggle" aria-label="Passer au français">FR</button>
       <div class="icons" aria-label="Social media">
         <a href="https://twitter.com/Parabole" target="_blank" rel="noopener" aria-label="X" title="X"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.6 8.7L23 22h-7l-5.5-7.2L4.2 22H1l8.1-9.3L.6 2h7.2l5 6.6L18.9 2zm-1.2 18h1.9L7.1 3.9H5.1L17.7 20z"/></svg></a>
         <a href="https://www.youtube.com/@ParaboleCanada" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></a>
@@ -157,7 +160,7 @@
 <main id="top">
   <section class="wrap games" id="titles">
     <div class="section-head">
-      <h2>Games</h2>
+      <h2 data-i18n="h_games">Games</h2>
     </div>
     <div class="grid">
 
@@ -165,12 +168,12 @@
         <a class="trailer" href="https://www.youtube.com/watch?v=Gs6MFVTsYGk" target="_blank" rel="noopener" aria-label="Watch the Kona II: Brume trailer" data-youtube="Gs6MFVTsYGk">
           <img src="kona2.jpg" alt="Kona II: Brume key art: a figure in a parka walks into a snowstorm" width="960" height="540">
           <span class="play"><span><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span></span>
-          <span class="tag">Launch trailer · 1:01</span>
+          <span class="tag" data-i18n="tag_k2">Launch trailer · 1:01</span>
         </a>
         <div class="card-body">
           <h3>Kona II: Brume</h3>
-          <div class="meta"><span>2023</span><span>PC · PS4 · PS5 · Xbox · Switch</span><span>Published by Voyage</span></div>
-          <p>Detective Carl Faubert is stranded in Manastan as a strange mist cuts Northern Québec off from the world. Survive the cold, follow the trail, and uncover what the Brume is hiding.</p>
+          <div class="meta"><span>2023</span><span>PC · PS4 · PS5 · Xbox · Switch</span><span data-i18n="pub">Published by Voyage</span></div>
+          <p data-i18n="desc_k2">Detective Carl Faubert is stranded in Manastan as a strange mist cuts Northern Québec off from the world. Survive the cold, follow the trail, and uncover what the Brume is hiding.</p>
           <div class="actions">
             <a class="btn primary" href="https://store.steampowered.com/app/1229020/Kona_II_Brume/" target="_blank" rel="noopener">Steam</a>
             <a class="btn" href="https://store.playstation.com/en-us/concept/10003023" target="_blank" rel="noopener">PlayStation</a>
@@ -183,12 +186,12 @@
         <a class="trailer" href="https://www.youtube.com/watch?v=2s9hJatokkU" target="_blank" rel="noopener" aria-label="Watch the Kona launch trailer" data-youtube="2s9hJatokkU">
           <img src="kona.jpg" alt="Kona key art: a snowy road seen through the windshield of a 1970s car" width="960" height="540">
           <span class="play"><span><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span></span>
-          <span class="tag">Launch trailer · 1:04</span>
+          <span class="tag" data-i18n="tag_k1">Launch trailer · 1:04</span>
         </a>
         <div class="card-body">
           <h3>Kona</h3>
-          <div class="meta"><span>2017</span><span>PC · PS4 · PS5 · Xbox · Switch · VR</span><span>Published by Voyage</span></div>
-          <p>October 1970. A private detective drives north to a quiet lakeside village and finds it buried under a blizzard, its people gone. A survival mystery told in the voice of a Québécois storyteller.</p>
+          <div class="meta"><span>2017</span><span>PC · PS4 · PS5 · Xbox · Switch · VR</span><span data-i18n="pub">Published by Voyage</span></div>
+          <p data-i18n="desc_k1">October 1970. A private detective drives north to a quiet lakeside village and finds it buried under a blizzard, its people gone. A survival mystery told in the voice of a Québécois storyteller.</p>
           <div class="actions">
             <a class="btn primary" href="https://store.steampowered.com/app/365160/Kona/" target="_blank" rel="noopener">Steam</a>
             <a class="btn" href="https://store.playstation.com/en-us/concept/227161" target="_blank" rel="noopener">PlayStation</a>
@@ -202,21 +205,21 @@
 
   <section class="wrap press" id="press">
     <div>
-      <h2>Press</h2>
-      <p>Press kits for Kona and Kona II: Brume are coming soon. Logos, screenshots and trailers are available on request in the meantime.</p>
+      <h2 data-i18n="h_press">Press</h2>
+      <p data-i18n="press_p">Press kits for Kona and Kona II: Brume are coming soon. Logos, screenshots and trailers are available on request in the meantime.</p>
     </div>
     <div id="us">
-      <h2>Us</h2>
-      <p>Voyage is an independent game studio in Québec City, makers of Kona and Kona II: Brume. Business, press and partnership inquiries:</p>
+      <h2 data-i18n="h_us">Us</h2>
+      <p data-i18n="us_p">Voyage is an independent game studio in Québec City, makers of Kona and Kona II: Brume. Business, press and partnership inquiries:</p>
       <div class="email">
         <span id="email-text">hello@voyage-studio.com</span>
-        <button type="button" id="copy-email" aria-label="Copy email address">Copy</button>
+        <button type="button" id="copy-email" aria-label="Copy email address" data-i18n="copy">Copy</button>
       </div>
     </div>
   </section>
 
   <footer class="wrap">
-    <span>© 2026 Voyage · Québec City, Canada</span>
+    <span data-i18n="footer">© 2026 Voyage · Québec City, Canada</span>
     <div class="socials" aria-label="Social media">
       <a href="https://twitter.com/Parabole" target="_blank" rel="noopener">X</a>
       <a href="https://www.youtube.com/@ParaboleCanada" target="_blank" rel="noopener">YouTube</a>
@@ -228,6 +231,40 @@
 </main>
 
 <script>
+  // Language: EN by default, FR if the browser prefers it or the visitor chose it.
+  const FR = {
+    nav_games: 'Jeux', nav_press: 'Presse', nav_us: 'Nous',
+    h_games: 'Jeux', h_press: 'Presse', h_us: 'Nous',
+    tag_k2: 'Bande-annonce de lancement · 1:01', tag_k1: 'Bande-annonce de lancement · 1:04',
+    pub: 'Édité par Voyage',
+    desc_k2: "Le détective Carl Faubert est coincé à Manastan alors qu'une étrange brume coupe le Nord du Québec du reste du monde. Survivez au froid, suivez la piste et découvrez ce que la Brume cache.",
+    desc_k1: "Octobre 1970. Un détective privé roule vers le nord jusqu'à un paisible village au bord d'un lac et le trouve enseveli sous un blizzard, ses habitants disparus. Un mystère de survie raconté par la voix d'un conteur québécois.",
+    press_p: "Les dossiers de presse de Kona et Kona II : Brume arrivent bientôt. D'ici là, logos, captures d'écran et bandes-annonces sont disponibles sur demande.",
+    us_p: "Voyage est un studio de jeux vidéo indépendant de Québec, créateur de Kona et Kona II : Brume. Demandes d'affaires, de presse et de partenariat :",
+    copy: 'Copier', copied: 'Copié', selected: 'Sélectionné',
+    footer: '© 2026 Voyage · Québec, Canada'
+  };
+  const EN = {};
+  document.querySelectorAll('[data-i18n]').forEach(el => { EN[el.dataset.i18n] = el.textContent; });
+  Object.assign(EN, { copied: 'Copied', selected: 'Selected' });
+  let lang = 'en';
+  try { lang = localStorage.getItem('lang') || (navigator.language.toLowerCase().startsWith('fr') ? 'fr' : 'en'); } catch (e) {}
+  const T = () => lang === 'fr' ? FR : EN;
+  const toggle = document.getElementById('lang-toggle');
+  function applyLang() {
+    const t = T();
+    document.querySelectorAll('[data-i18n]').forEach(el => { if (t[el.dataset.i18n]) el.textContent = t[el.dataset.i18n]; });
+    document.documentElement.lang = lang;
+    toggle.textContent = lang === 'fr' ? 'EN' : 'FR';
+    toggle.setAttribute('aria-label', lang === 'fr' ? 'Switch to English' : 'Passer au français');
+  }
+  toggle.addEventListener('click', () => {
+    lang = lang === 'fr' ? 'en' : 'fr';
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+    applyLang();
+  });
+  applyLang();
+
   // Trailers: click-to-play YouTube players. The thumbnail is swapped for an
   // iframe (youtube-nocookie, autoplay) on click, so the page loads no
   // YouTube script until someone presses play. The Claude preview host blocks
@@ -262,12 +299,12 @@
   const btn = document.getElementById('copy-email');
   const txt = document.getElementById('email-text');
   btn.addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText(txt.textContent); btn.textContent = 'Copied'; }
+    try { await navigator.clipboard.writeText(txt.textContent); btn.textContent = T().copied; }
     catch (e) {
       const r = document.createRange(); r.selectNodeContents(txt);
-      const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected';
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = T().selected;
     }
-    setTimeout(() => btn.textContent = 'Copy', 1600);
+    setTimeout(() => btn.textContent = T().copy, 1600);
   });
 </script>
 
