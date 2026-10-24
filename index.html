@@ -64,7 +64,7 @@
   .icons a:hover { color: var(--fg); background: color-mix(in srgb, var(--red) 18%, transparent); }
   .icons svg { width: 15px; height: 15px; fill: currentColor; }
   @media (max-width: 640px) { .brand .wordmark { display: none; } .bar-right { gap: 1rem; } .icons { padding-left: 0.7rem; gap: 0.1rem; } .icons a { width: 26px; height: 26px; } }
-  @media (max-width: 400px) { .icons { display: none; } }
+  @media (max-width: 520px) { .icons { display: none; } }
   @media (max-width: 560px) { nav { gap: 1rem; } nav a { font-size: 0.88rem; } }
 
   /* Socials */
@@ -112,6 +112,11 @@
   .btn.primary:hover { background: var(--red); border-color: var(--red); color: #fff; }
   .btn svg { width: 14px; height: 14px; fill: currentColor; }
 
+  .grid.solo { grid-template-columns: minmax(0, 1fr); max-width: calc((100% - 1.5rem) / 2); margin-inline: auto; }
+  @media (max-width: 900px) { .grid.solo { max-width: 100%; } }
+  .games.collabs { padding-top: 0; }
+  .card-body p.role { color: var(--red); font-size: 0.92rem; }
+
   /* Press / contact strip */
   .press { border-top: 1px solid var(--line); padding-block: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 2rem; }
   .press > div { text-align: center; display: grid; justify-items: center; }
@@ -142,6 +147,7 @@
     <div class="bar-right">
       <nav aria-label="Main">
         <a href="#titles" data-i18n="nav_games">Games</a>
+        <a href="#collabs" data-i18n="nav_collabs">Collabs</a>
         <a href="#press" data-i18n="nav_press">Press</a>
         <a href="#us" data-i18n="nav_us">Us</a>
       </nav>
@@ -202,6 +208,32 @@
     </div>
   </section>
 
+  <section class="wrap games collabs" id="collabs">
+    <div class="section-head">
+      <h2 data-i18n="h_collabs">Collabs</h2>
+    </div>
+    <div class="grid solo">
+
+      <article class="card">
+        <a class="trailer" href="https://www.youtube.com/watch?v=2mq9n4NcXWc" target="_blank" rel="noopener" aria-label="Watch the Croak trailer" data-youtube="2mq9n4NcXWc">
+          <img src="croak.jpg" alt="Croak key art: a crowned frog prince swings by his tongue through a pastel sky" width="960" height="540" loading="lazy">
+          <span class="play"><span><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span></span>
+          <span class="tag" data-i18n="tag_croak">Trailer · 1:03</span>
+        </a>
+        <div class="card-body">
+          <h3>Croak</h3>
+          <div class="meta"><span>2027</span><span>PC · Xbox Series</span><span data-i18n="by_woodrunner">By WoodRunner Games</span></div>
+          <p class="role" data-i18n="role_croak">Voyage designs and codes the game's UI and UX.</p>
+          <p data-i18n="desc_croak">A cursed kingdom, a prince turned into a frog, and a very long tongue. Grapple, swing and bounce through hand-crafted levels in this side-scrolling precision platformer.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://store.steampowered.com/app/2616540/Croak/" target="_blank" rel="noopener" data-i18n="wishlist">Wishlist on Steam</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
   <section class="wrap press" id="press">
     <div>
       <h2 data-i18n="h_press">Press</h2>
@@ -231,6 +263,11 @@
 <script>
   // Language: EN by default, FR if the browser prefers it or the visitor chose it.
   const FR = {
+    nav_collabs: 'Collabs', h_collabs: 'Collabs',
+    tag_croak: 'Bande-annonce · 1:03', by_woodrunner: 'Par WoodRunner Games',
+    role_croak: "Voyage conçoit et programme l'interface et l'expérience utilisateur du jeu.",
+    desc_croak: "Un royaume maudit, un prince changé en grenouille et une très longue langue. Agrippez-vous, balancez-vous et rebondissez à travers des niveaux faits à la main dans ce jeu de plateforme de précision à défilement horizontal.",
+    wishlist: 'Ajouter à la liste de souhaits Steam',
     nav_games: 'Jeux', nav_press: 'Presse', nav_us: 'Nous',
     h_games: 'Jeux', h_press: 'Presse', h_us: 'Nous',
     tag_k2: 'Bande-annonce de lancement · 1:01', tag_k1: 'Bande-annonce de lancement · 1:04',
