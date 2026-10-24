@@ -112,6 +112,7 @@
   .btn.primary:hover { background: var(--red); border-color: var(--red); color: #fff; }
   .btn svg { width: 14px; height: 14px; fill: currentColor; }
 
+  section[id], #us { scroll-margin-top: calc(72px + env(safe-area-inset-top, 0px)); }
   .grid.solo { grid-template-columns: minmax(0, 1fr); max-width: calc((100% - 1.5rem) / 2); margin-inline: auto; }
   @media (max-width: 900px) { .grid.solo { max-width: 100%; } }
   .games.collabs { padding-top: 0; }
